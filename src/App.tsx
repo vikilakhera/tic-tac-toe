@@ -1,4 +1,3 @@
-import './app.css';
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,6 +6,7 @@ import {
 import Home from "./pages/homepage";
 import Name from "./pages/namepage";
 import Game from "./pages/gamepage/game";
+import './app.css';
 
 function App() {
   return (
