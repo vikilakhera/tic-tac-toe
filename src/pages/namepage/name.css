@@ -1,0 +1,95 @@
+.name-wrapper {
+  min-height: 100vh;
+  background-image: linear-gradient(180deg, #cb4e87, #935ecd);
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+.name-content {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+.child {
+  padding: 2rem;
+  width: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.left-child {
+  align-items: flex-end;
+  background: hotpink;
+}
+.right-child {
+  align-items: flex-start;
+  background: lightskyblue;
+}
+.child-content {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+.left-child-content {
+  margin-top: 10vh;
+}
+.right-child-content {
+  margin-top: 60vh;
+}
+.name-heading{
+  margin-left: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+}
+.player-img1 {
+  top: 28vh;
+  left: 8rem;
+  position: absolute;
+}
+.player-img2 {
+  top: 28vh;
+  right: 8rem;
+  position: absolute;
+}
+input {
+  outline: none;
+  color: #fff;
+  padding: 10px 15px;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 3rem;
+}
+.left-input {
+  background: linear-gradient(0deg, #f98cc2, #fd83c0, #f999c9);
+}
+.right-input {
+  background: linear-gradient(0deg, #afdefb, #99d5fb, #afdefb);
+}
+.versus-img-wrapper{
+  position: absolute;
+    top: 30vh;
+}
+.versus-img{
+  width: 250px;
+}
+.to-game {
+  position: absolute;
+  bottom: 15vh;
+  box-shadow: 0 7px 7px 0px #817f7ad1;
+}
+.play-btn-name{
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  background: #ffea00;
+  /* transform: translateY(-10px); */
+  transition: 0.4s ease-in;
+}
+.play-btn-name:hover{
+  transform: translateY(7px);
+}
