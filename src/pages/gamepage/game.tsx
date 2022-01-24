@@ -12,8 +12,8 @@ function Game(props:Props) {
   let iconHandler;
   let divHandler;
 
-  const playerName1:string = location.state.playerName1 || 'Billy';
-  const playerName2:string = location.state.playerName2 || 'Mandy';
+  const playerName1:string = location?.state?.playerName1 || 'Billy';
+  const playerName2:string = location?.state?.playerName2 || 'Mandy';
 
   const [player1, setPlayer1] = useState<number[]>([]);
   const [player2, setPlayer2] = useState<number[]>([]);

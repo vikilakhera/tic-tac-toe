@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import withWaypoint from '../../common/withWayPoint';
 import player1 from '../../images/player1.png';
@@ -8,8 +8,15 @@ import versus from '../../images/vs.png';
 import './name.css';
 
 function Name(props:Props) {
+  const focusRef = useRef<HTMLInputElement | null>(null);
   const [playerName1, setPlayerName1] = useState<string>('');
   const [playerName2, setPlayerName2] = useState<string>('');
+
+  useEffect(() => {
+    if(focusRef.current){
+      focusRef.current.focus();
+    }
+  }, [])
 
   return (
     <div className='name-wrapper'>
@@ -20,6 +27,7 @@ function Name(props:Props) {
               Player 1
             </div>
             <input 
+              ref={focusRef}
               className={props.fade ? 'left-input fadeRight' : 'left-input'}
               type='text' 
               placeholder='Enter Your Name' 
