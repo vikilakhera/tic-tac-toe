@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 function Modal(props: Props) {
-  console.log(props.fade);
   return (
     <div className={props.fade ? 'winner-modal zoom-in-zoom-out' : 'winner-modal'} >
       <div className={props.fade ? 'modal-content zoom-in-zoom-out' : 'modal-content'}>
