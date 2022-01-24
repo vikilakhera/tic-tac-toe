@@ -38,13 +38,13 @@ function Game(props:Props) {
   const checkWinner = () => {
     winningCombosMap.map(item => {
       if(item.every(e => player1.includes(e))){
-        setWinner(`${playerName1} is winner`);
+        setTimeout(() => setWinner(`${playerName1} is winner`), 500);
       }
       else if(item.every(e => player2.includes(e))){
-        setWinner(`${playerName2} is winner`);
+        setTimeout(() => setWinner(`${playerName2} is winner`), 500);
       }
       else if(player1.length >= 5){
-        setWinner("It's a draw!!!");
+        setTimeout(() => setWinner("It's a draw!!!"), 500);
       }
     })
   }
@@ -143,7 +143,7 @@ function Game(props:Props) {
         </div>
         {
           winner.length ? (
-            <Modal winner={winner} playAgain={playAgain} />
+            <Modal winner={winner} playAgain={playAgain} fade={props.fade} />
           ):(
             <></>
           )
