@@ -6,7 +6,7 @@ import {
 import Home from "./pages/homepage";
 import Name from "./pages/namepage";
 import Game from "./pages/gamepage/game";
-import './app.css';
+import './App.css';
 
 function App() {
   return (
