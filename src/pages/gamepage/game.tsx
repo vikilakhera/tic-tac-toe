@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { getId, gridMap, winningCombosMap } from '.';
 import player1img from '../../images/player1.png';
@@ -15,16 +15,16 @@ function Game(props:Props) {
   const playerName1:string = location?.state?.playerName1 || 'Billy';
   const playerName2:string = location?.state?.playerName2 || 'Mandy';
 
-  const [player1, setPlayer1] = useState<number[]>([]);
-  const [player2, setPlayer2] = useState<number[]>([]);
+  const player1 = useRef<number[]>([]);
+  const player2 = useRef<number[]>([]);
   const [checkTurn, setCheckTurn] = useState<boolean>(true);
   const [winner, setWinner] = useState<string>("");
 
   const handleCheckTurn = (index:number) => {
     if(checkTurn){
-      checkTurnConditions(index, player1, "times");
+      checkTurnConditions(index, player1.current, "times");
     }else{
-      checkTurnConditions(index, player2, "circle");
+      checkTurnConditions(index, player2.current, "circle");
     }
   }
 
@@ -36,17 +36,20 @@ function Game(props:Props) {
   }
 
   const checkWinner = () => {
-    winningCombosMap.map(item => {
-      if(item.every(e => player1.includes(e))){
-        setTimeout(() => setWinner(`${playerName1} is winner`), 500);
+    const hasWinner = winningCombosMap.some(item => {
+      if(item.every(e => player1.current.includes(e))){
+        setTimeout(() => setWinner(`${playerName1} is winner`), 300);
+        return true;
       }
-      else if(item.every(e => player2.includes(e))){
-        setTimeout(() => setWinner(`${playerName2} is winner`), 500);
+      else if(item.every(e => player2.current.includes(e))){
+        setTimeout(() => setWinner(`${playerName2} is winner`), 300);
+        return true;
       }
-      else if(player1.length >= 5){
-        setTimeout(() => setWinner("It's a draw!!!"), 500);
-      }
+      return false
     })
+    if(!hasWinner && player1.current.length >= 5){
+      setTimeout(() => setWinner("It's a draw!!!"), 300);
+    }
   }
 
   const handleDisableDiv = (index:number, action:string) => {
@@ -55,20 +58,20 @@ function Game(props:Props) {
   }
 
   const playAgain = () => {
-    setPlayer1([]);
-    setPlayer2([]);
+    clearGrid();
+    player1.current = [];
+    player2.current = [];
     setWinner('');
     setCheckTurn(true);
-    clearGrid();
   }
 
   const clearGrid = () => {
-    player1.map(item => {
+    player1.current.map(item => {
       iconHandler = getId(`times-${item}`);
       iconHandler!.style.opacity = "0";
       handleDisableDiv(item, "auto");
     })
-    player2.map(item => {
+    player2.current.map(item => {
       iconHandler = getId(`circle-${item}`);
       iconHandler!.style.opacity = "0";
       handleDisableDiv(item, "auto");
